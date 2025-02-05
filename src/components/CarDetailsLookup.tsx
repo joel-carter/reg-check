@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import CarRegInput from './CarRegInput'; // Import reusable input component
+import './CarDetailsLookup.css'; // Import component-specific styles
 
 const CarDetailsLookup: React.FC = () => {
   const [carReg, setCarReg] = useState('');
@@ -17,7 +19,7 @@ const CarDetailsLookup: React.FC = () => {
     setCarData(null);
 
     const apiUrl = 'https://uat.driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles';
-    const apiKey = 'nFt3U5myDA34LcczTgx4s50zBp7vIDRQ9a95w8Dp'; // Replace with env variable
+    const apiKey = import.meta.env.VITE_CAR_DETAILS_API_KEY; 
 
     try {
       const response = await fetch(apiUrl, {
@@ -51,17 +53,12 @@ const CarDetailsLookup: React.FC = () => {
     <div>
       <h1>Car Details Lookup</h1>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter Car Registration"
-          value={carReg}
-          onChange={handleRegChange}
-          maxLength={10}
-          required
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? 'Loading...' : 'Get Car Details'}
-        </button>
+        <div className="input-container">
+          <CarRegInput value={carReg} onChange={handleRegChange} />
+          <button type="submit" disabled={loading}>
+            {loading ? 'Loading...' : 'Search'}
+          </button>
+        </div>
       </form>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}

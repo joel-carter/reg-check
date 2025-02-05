@@ -1,0 +1,17 @@
+/* Car Details Section */
+
+/* Form Container */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+/* Container for input and button */
+.input-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px; /* Adds space between input and button */
+}
