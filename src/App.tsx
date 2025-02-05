@@ -1,11 +1,11 @@
 // App.tsx
 import './App.css';
-import CarAgeLookup from './components/CarAgeLookup';
+import CarDetailsLookup from './components/CarDetailsLookup';
 
 function App() {
   return (
     <div className="App">
-      <CarAgeLookup />
+      <CarDetailsLookup />
     </div>
   );
 }
